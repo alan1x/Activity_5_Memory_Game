@@ -15,7 +15,20 @@ from turtle import *
 from freegames import path
 
 car = path("car.gif")
-tiles = list(range(32)) * 2
+
+symbols = [
+    'A', 'B', 'C', 'D',
+    'E', 'F', 'G', 'H',
+    'I', 'J', 'K', 'L',
+    'M', 'N', 'O', 'P',
+    'Q', 'R', 'S', 'T',
+    'U', 'V', 'W', 'X',
+    'Y', 'Z', '1', '2',
+    '3', '4', '5', '6'
+]
+
+tiles = symbols * 2
+
 state = {"mark": None, "intentos": 0}
 hide = [True] * 64
 
@@ -56,6 +69,18 @@ def tap(x, y):
         hide[mark] = False
         state["mark"] = None
 
+        if all(tile == False for tile in hide):
+            print("You won")
+
+            up()
+            goto(-70,0)
+            color('green')
+
+            write("YOU WON", font=('Arial', 30, 'bold'))
+
+            update()
+            done()
+
 
 def draw():
     """Draw image and tiles."""
@@ -73,10 +98,13 @@ def draw():
 
     if mark is not None and hide[mark]:
         x, y = xy(mark)
+
         up()
-        goto(x + 22, y + 20)
+        goto(x + 15, y + 10)
+
         color("black")
-        write(tiles[mark], font=("Arial", 30, "normal"))
+
+        write(tiles[mark], font=("Arial", 18, "bold"))
 
     up()
     goto(-195, 210)
