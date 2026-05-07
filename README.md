@@ -4,7 +4,7 @@
 
 Based on [Grant Jenks' freegames cannon](http://www.grantjenks.com/docs/freegames/cannon.html).
 
-## Changes
+# Changes
 
 - Count and display the number of taps
 - Detect when all squares have been uncovered
